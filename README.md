@@ -28,3 +28,21 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ============================================================================================================
 Service is a class in Angular which act as central Repositry. Where we can centralize you data
+
+Dependency -> A class(Component) will depend on services (HttpService to get value from backend, logging service , etc)
+Dependency Injection -> Service class instance is injected/instanitated in our Componet(class)
+How to provide a service ?
+Provide service means we tell angular we want to use service in our class
+We can provide a service at -> Component level 
+                            -> Module level
+->Class level : 
+
+@Component({
+  selector: 'app-new-account',
+  templateUrl: './new-account.component.html',
+  styleUrls: ['./new-account.component.css'],
+  providers : [MyLoggingService]
+})
+
+->Module level :
+
