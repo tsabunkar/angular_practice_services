@@ -33,9 +33,9 @@ Dependency -> A class(Component) will depend on services (HttpService to get val
 Dependency Injection -> Service class instance is injected/instanitated in our Componet(class)
 How to provide a service ?
 Provide service means we tell angular we want to use service in our class
-We can provide a service at -> Component level 
+We can provide a service at -> Component/Class level 
                             -> Module level
-->Class level : 
+->Component/Class level : 
 
 @Component({
   selector: 'app-new-account',
@@ -46,3 +46,6 @@ We can provide a service at -> Component level
 
 ->Module level :
 
+
+NOTE : If we provide Service at class/Component level then no need to provide the service inside the module level
+If We provide Service at module level 
