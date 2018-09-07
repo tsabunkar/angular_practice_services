@@ -6,7 +6,18 @@ import { AccountService } from '../shared/account-service/account.service';
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css'],
-  providers: [MyLoggingService, AccountService] //providing the service at Component level
+
+  /*   providers: [MyLoggingService, AccountService]  *///providing the new instance of AccountService service
+  // at child component thus this new service(AccountService) instance overrides the hirerachical service instance
+  // which is inherited from Parent comp (AppComponent)
+  providers: [MyLoggingService]
+  //thus not providing the new service(AccountService) instance, instead using the 
+  //AccountService instance directly in the constructor() which will be inherited from 
+  //parent component (in the backsene)
+
+  // MyLoggingService service -> is new service instance provided only in this child component
+  // AccountService service  -> is service instance inherited from parent component (AppComponent)
+
 })
 export class AccountComponent {
   @Input() account: { name: string, status: string };

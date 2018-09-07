@@ -5,7 +5,8 @@ import { AccountService } from './shared/account-service/account.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [AccountService]
+  providers: [AccountService] //providing the new instance of service at Parent component, this same service 
+  //instance will be inherited to all its child component (NewAccountComponent, AccountComponent)
 })
 export class AppComponent implements OnInit {
   /*  accounts = [
