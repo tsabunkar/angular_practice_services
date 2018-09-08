@@ -10,7 +10,8 @@ import { AccountService } from '../shared/account-service/account.service';
   /*   providers: [MyLoggingService, AccountService]  *///providing the new instance of AccountService service
   // at child component thus this new service(AccountService) instance overrides the hirerachical service instance
   // which is inherited from Parent comp (AppComponent)
-  providers: [MyLoggingService]
+
+  /*   providers: [MyLoggingService] */
   //thus not providing the new service(AccountService) instance, instead using the 
   //AccountService instance directly in the constructor() which will be inherited from 
   //parent component (in the backsene)
@@ -36,6 +37,8 @@ export class AccountComponent {
   //Using cutom created service
   onSetTo(status: string) {
     this.accountService.updateStatus(this.id, status);
-    this.logginService.logStatusChange(status);
+    // this.logginService.logStatusChange(status);
+    this.accountService.mystatusUpdatedEvent.emit(status);//In this child component we r emmitting an custome
+    //event which will be listened by child2 compo (NewAccountComponent)
   }
 }

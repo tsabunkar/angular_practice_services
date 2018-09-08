@@ -10,7 +10,8 @@ import { AccountService } from '../shared/account-service/account.service';
   /*   providers: [MyLoggingService, AccountService]  *///providing the new instance of AccountService service
   // at child component thus this new service(AccountService) instance overrides the hirerachical service instance
   // which is inherited from Parent comp (AppComponent)
-  providers: [MyLoggingService]
+
+  /*   providers: [MyLoggingService] */
   //thus not providing the new service(AccountService) instance, instead using the 
   //AccountService instance directly in the constructor() which will be inherited from 
   //parent component (in the backsene)
@@ -22,7 +23,13 @@ import { AccountService } from '../shared/account-service/account.service';
 export class NewAccountComponent {
   /*   @Output() accountAdded = new EventEmitter<{ name: string, status: string }>(); */
 
-  constructor(private logginService: MyLoggingService, private accountService: AccountService) { }//In this way we inject the LoggingService in
+  constructor(private logginService: MyLoggingService, private accountService: AccountService) {
+    //Event emitted by child1 compo (AccountComponent) is listened in this child2 compo 
+    //thus COMMUNICATION B/W TWO SIBLINGS -via-> Services 
+    this.accountService.mystatusUpdatedEvent.subscribe((statusVal: string) => {
+      alert('New status value is ' + statusVal)
+    })
+  }//In this way we inject the LoggingService in
   // this NewAccountComponent
 
 
@@ -42,7 +49,7 @@ export class NewAccountComponent {
   //Using cutom created service
   onCreateAccount(accountName: string, accountStatus: string) {
     this.accountService.addAccount(accountName, accountStatus);
-    this.logginService.logStatusChange(accountStatus);
+    // this.logginService.logStatusChange(accountStatus);
   }
 
 

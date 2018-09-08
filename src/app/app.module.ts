@@ -15,7 +15,9 @@ import { MyLoggingService } from './shared/logging-service/logging.service';
   imports: [
     BrowserModule
   ],
-  providers: [],//providing the service at Module level
+  providers: [MyLoggingService],//providing the service at Module level(If we declare our service here, this whole app module
+  //will recieve the same instnace of service, unless we override it by specificing the providers array in
+  //the given component)
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -82,4 +82,13 @@ only for this component (no instance will be avaiable for any other component bc
 
 
 ------------------------------------------------------------------------------------------------------------
+Note : One Service can be injected to a Component, another Service only if it has meta-data.
+i.e- Component class has meta-data(In java- Annotations) as -> @Component
+Service class has meta-data as ->@Injectable
+
+We can Inject one service instance into another service - only if the service class has meta-data(Annotation)
+as @Injectable- Which tells angular that this service can be injected by another service instance
+
+-------------------------------------------------------------------------------------------------------------
+
 
